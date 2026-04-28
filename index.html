@@ -51,16 +51,61 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero container" id="home">
-    <div class="hero__content">
-      <p class="hero__greeting">// Hi, my name is</p>
-      <h1 class="hero__title">Nitish Devadiga.<br/><span class="accent">I build for the web.</span></h1>
-      <p class="hero__subtitle">Software Developer</p>
-      <p class="hero__description">
-        I'm a developer based in Bengaluru with 3+ years of experience building scalable web applications using Java, Spring Boot, Vue.js, and TypeScript. I focus on shipping clean, maintainable code that solves real problems.
-      </p>
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn-primary">Get in touch →</a>
-        <a href="#experience" class="btn btn-secondary">View experience</a>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__greeting">// Hi, my name is</p>
+        <h1 class="hero__title">Nitish Devadiga.<br/><span class="accent">I build for the web.</span></h1>
+        <p class="hero__subtitle">Software Developer</p>
+        <p class="hero__description">
+          I'm a developer based in Bengaluru with 3+ years of experience building scalable web applications using Java, Spring Boot, Vue.js, and TypeScript. I focus on shipping clean, maintainable code that solves real problems.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn-primary">Get in touch →</a>
+          <a href="#experience" class="btn btn-secondary">View experience</a>
+        </div>
+      </div>
+
+      <!-- Visual side: terminal mockup + floating badges -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__badges">
+          <div class="hero__badge hero__badge--1">
+            <i class="devicon-java-plain colored"></i>
+            <span>Java</span>
+          </div>
+          <div class="hero__badge hero__badge--2">
+            <i class="devicon-vuejs-plain colored"></i>
+            <span>Vue.js</span>
+          </div>
+          <div class="hero__badge hero__badge--3">
+            <i class="devicon-spring-plain colored"></i>
+            <span>Spring Boot</span>
+          </div>
+          <div class="hero__badge hero__badge--4">
+            <span>🤖</span>
+            <span>AI-Assisted</span>
+          </div>
+        </div>
+
+        <div class="hero__terminal">
+          <div class="hero__terminal-header">
+            <span class="hero__terminal-dot"></span>
+            <span class="hero__terminal-dot"></span>
+            <span class="hero__terminal-dot"></span>
+            <span class="hero__terminal-title">~/nitish/portfolio · zsh</span>
+          </div>
+          <div class="hero__terminal-body">
+            <span class="line"><span class="comment">// Welcome to my portfolio</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="var">whoami</span></span>
+            <span class="line"><span class="string">"Nitish — Full-Stack Developer"</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="var">cat</span> skills.json</span>
+            <span class="line"><span class="punct">{</span></span>
+            <span class="line">  <span class="fn">"backend"</span><span class="punct">:</span> <span class="string">"Java · Spring Boot"</span><span class="punct">,</span></span>
+            <span class="line">  <span class="fn">"frontend"</span><span class="punct">:</span> <span class="string">"Vue.js · TypeScript"</span><span class="punct">,</span></span>
+            <span class="line">  <span class="fn">"ai_tools"</span><span class="punct">:</span> <span class="string">"Claude · Copilot"</span></span>
+            <span class="line"><span class="punct">}</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="cursor-blink"></span></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
