@@ -33,6 +33,20 @@
 
   <!-- Compiled stylesheet -->
   <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Inline theme init: runs BEFORE first paint to avoid theme flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('nitish-portfolio-theme');
+        var preferLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved || (preferLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -40,12 +54,18 @@
   <nav class="nav">
     <div class="nav__container">
       <a href="#" class="nav__logo">nitish<span>.</span>dev</a>
-      <ul class="nav__links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav__right">
+        <ul class="nav__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Switch theme" title="Switch theme">
+          <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -120,7 +140,7 @@
           Hello! I'm Nitish — a Software Developer who enjoys turning real business problems into clean, maintainable code. My journey into development started during my engineering days at <strong>KVG College of Engineering</strong>, where I graduated with a CGPA of 8.9.
         </p>
         <p>
-          Since then, I've spent <strong>3+ years at JBPB Offshore</strong> building full-stack web applications across the entire stack — from designing REST APIs and database schemas to crafting responsive UIs alongside designers. I've shipped features end-to-end, including a secure OTP-based login flow for an ERP platform.
+          Since then, I've spent <strong>3+ years at JBPB Offshore Pvt Ltd</strong> building full-stack web applications across the entire stack — from designing REST APIs and database schemas to crafting responsive UIs alongside designers. I've shipped features end-to-end, including a secure OTP-based login flow for an ERP platform.
         </p>
         <p>
           I'm also a strong believer in working smarter — I actively use AI tools like <strong>Claude Code</strong> and <strong>GitHub Copilot</strong> in my daily workflow to write better code, faster, while keeping a strong focus on review and craftsmanship.
@@ -131,7 +151,7 @@
         <div class="about__row"><span class="label">Location</span><span class="value">Bengaluru, India</span></div>
         <div class="about__row"><span class="label">Experience</span><span class="value">3+ years</span></div>
         <div class="about__row"><span class="label">Role</span><span class="value">Software Developer</span></div>
-        <div class="about__row"><span class="label">Company</span><span class="value">JBPB Offshore</span></div>
+        <div class="about__row"><span class="label">Company</span><span class="value">JBPB Offshore Pvt Ltd</span></div>
         <div class="about__row"><span class="label">Education</span><span class="value">B.E. CSE, 8.9 CGPA</span></div>
         <div class="about__row">
           <span class="label">Languages</span>
@@ -227,7 +247,7 @@
       <div class="experience__header">
         <div>
           <h3 class="experience__role">Software Developer</h3>
-          <p class="experience__company">JBPB Offshore Private Limited (RW Team)</p>
+          <p class="experience__company">JBPB Offshore Pvt Ltd (RW Team)</p>
         </div>
         <div class="experience__meta">
           Feb 2023 — Present<br/>
