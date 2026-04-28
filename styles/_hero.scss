@@ -10,9 +10,57 @@
   align-items: center;
   padding: 6rem 0 4rem;
   position: relative;
+  overflow: hidden;
+
+  // Animated grid background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(88, 166, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+    animation: gridShift 20s linear infinite;
+  }
+
+  // Glowing orb behind content
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.15), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
 
   &__content {
     max-width: 800px;
+    position: relative;
+    z-index: 2;
   }
 
   &__greeting {
@@ -50,7 +98,7 @@
     font-weight: 400;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.3s forwards;
-    min-height: 1.4em; // Prevents layout shift during typewriter
+    min-height: 1.4em;
 
     .typewriter-cursor {
       display: inline-block;
@@ -79,9 +127,197 @@
     opacity: 0;
     animation: fadeUp 0.6s ease 0.6s forwards;
   }
+
+  // ===== Visual side: terminal + floating snippets =====
+  &__visual {
+    position: relative;
+    height: 100%;
+    min-height: 420px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.5s forwards;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  // Terminal mockup
+  &__terminal {
+    @include card;
+    background: rgba(28, 33, 40, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(88, 166, 255, 0.15);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  &__terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1rem;
+    background: rgba(13, 17, 23, 0.6);
+    border-bottom: 1px solid $border;
+  }
+
+  &__terminal-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+
+    &:nth-child(1) { background: #ff5f57; }
+    &:nth-child(2) { background: #febc2e; }
+    &:nth-child(3) { background: #28c940; }
+  }
+
+  &__terminal-title {
+    margin-left: 0.75rem;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $text-muted;
+  }
+
+  &__terminal-body {
+    padding: 1.25rem;
+    font-family: $font-mono;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: $text;
+    min-height: 220px;
+
+    .line {
+      display: block;
+      opacity: 0;
+      animation: typeIn 0.4s ease forwards;
+      white-space: pre-wrap;
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{0.8 + ($i * 0.35)}s;
+        }
+      }
+    }
+
+    .prompt { color: $accent; }
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .fn { color: #d2a8ff; }
+    .comment { color: $text-muted; font-style: italic; }
+    .punct { color: $text-muted; }
+    .var { color: #79c0ff; }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: $accent;
+      vertical-align: text-bottom;
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+  }
+
+  // Floating code badges
+  &__badges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__badge {
+    position: absolute;
+    background: rgba(28, 33, 40, 0.85);
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    padding: 0.45rem 0.85rem;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $text-muted;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    i {
+      font-size: 1rem;
+    }
+
+    &--1 {
+      top: -10px;
+      right: 10%;
+      animation: floatBadge1 7s ease-in-out infinite;
+    }
+    &--2 {
+      top: 35%;
+      left: -5%;
+      animation: floatBadge2 9s ease-in-out infinite;
+    }
+    &--3 {
+      bottom: 5%;
+      right: -3%;
+      animation: floatBadge3 8s ease-in-out infinite;
+    }
+    &--4 {
+      bottom: 30%;
+      left: 5%;
+      animation: floatBadge4 10s ease-in-out infinite;
+    }
+  }
 }
+
+// =========================================
+// Hero animations
+// =========================================
 
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes typeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes floatBadge1 {
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50% { transform: translate(8px, -12px) rotate(2deg); }
+}
+
+@keyframes floatBadge2 {
+  0%, 100% { transform: translate(0, 0) rotate(2deg); }
+  50% { transform: translate(-10px, 10px) rotate(-2deg); }
+}
+
+@keyframes floatBadge3 {
+  0%, 100% { transform: translate(0, 0) rotate(-2deg); }
+  50% { transform: translate(6px, -10px) rotate(3deg); }
+}
+
+@keyframes floatBadge4 {
+  0%, 100% { transform: translate(0, 0) rotate(3deg); }
+  50% { transform: translate(-8px, -8px) rotate(-3deg); }
 }
