@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(13, 17, 23, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid $border;
@@ -19,7 +19,7 @@
 
   &--scrolled {
     padding: 0.6rem 0;
-    background: rgba(13, 17, 23, 0.95);
+    background: var(--nav-bg-scrolled);
   }
 
   &__container {
@@ -42,6 +42,12 @@
     span {
       color: $accent;
     }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   &__links {
@@ -73,5 +79,67 @@
         border-radius: 2px;
       }
     }
+  }
+}
+
+// =========================================
+// Theme Toggle Button
+// =========================================
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid $border;
+  color: $text;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all $transition-fast;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+    transform: translateY(-2px);
+    box-shadow: $shadow-accent;
+  }
+
+  &__icon {
+    display: block;
+    line-height: 1;
+    transition: transform $transition-medium, opacity $transition-fast;
+
+    // Sun icon (visible in dark mode — clicking switches TO light)
+    &--sun {
+      display: none;
+    }
+    // Moon icon (visible in light mode — clicking switches TO dark)
+    &--moon {
+      display: block;
+    }
+  }
+
+  // When in light mode, show the moon (to switch to dark)
+  // When in dark mode, show the sun (to switch to light)
+  [data-theme="dark"] & &__icon--sun {
+    display: block;
+  }
+  [data-theme="dark"] & &__icon--moon {
+    display: none;
+  }
+  [data-theme="light"] & &__icon--sun {
+    display: none;
+  }
+  [data-theme="light"] & &__icon--moon {
+    display: block;
+  }
+
+  &:active &__icon {
+    transform: rotate(180deg) scale(0.85);
   }
 }

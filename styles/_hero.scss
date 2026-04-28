@@ -18,8 +18,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(88, 166, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(88, 166, 255, 0.04) 1px, transparent 1px);
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
     background-size: 50px 50px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
@@ -36,7 +36,7 @@
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(88, 166, 255, 0.15), transparent 70%);
+    background: radial-gradient(circle, var(--orb-color), transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -144,12 +144,12 @@
   // Terminal mockup
   &__terminal {
     @include card;
-    background: rgba(28, 33, 40, 0.75);
+    background: var(--terminal-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow:
       0 20px 50px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(88, 166, 255, 0.15);
+      0 0 0 1px var(--accent-border);
     overflow: hidden;
     position: relative;
     z-index: 2;
@@ -161,7 +161,7 @@
     align-items: center;
     gap: 0.45rem;
     padding: 0.7rem 1rem;
-    background: rgba(13, 17, 23, 0.6);
+    background: var(--terminal-header-bg);
     border-bottom: 1px solid $border;
   }
 
@@ -204,12 +204,12 @@
     }
 
     .prompt { color: $accent; }
-    .keyword { color: #ff7b72; }
-    .string { color: #a5d6ff; }
-    .fn { color: #d2a8ff; }
+    .keyword { color: var(--code-keyword); }
+    .string { color: var(--code-string); }
+    .fn { color: var(--code-fn); }
     .comment { color: $text-muted; font-style: italic; }
     .punct { color: $text-muted; }
-    .var { color: #79c0ff; }
+    .var { color: var(--code-var); }
 
     .cursor-blink {
       display: inline-block;
@@ -232,7 +232,7 @@
 
   &__badge {
     position: absolute;
-    background: rgba(28, 33, 40, 0.85);
+    background: var(--badge-bg);
     border: 1px solid $border;
     border-radius: $radius-md;
     padding: 0.45rem 0.85rem;

@@ -1,20 +1,92 @@
 // =========================================
-// Design Tokens
+// Design Tokens — using CSS custom properties
+// to enable runtime light/dark theme switching
 // =========================================
 
-// Colors
-$bg: #0d1117;
-$bg-alt: #161b22;
-$surface: #1c2128;
-$border: #30363d;
-$text: #e6edf3;
-$text-muted: #8b949e;
-$accent: #58a6ff;
-$accent-hover: #79b8ff;
-$accent-warm: #f0a868;
-$accent-soft: rgba(88, 166, 255, 0.12);
-$accent-border: rgba(88, 166, 255, 0.3);
-$success: #3fb950;
+// Default (dark) theme
+:root,
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-alt: #161b22;
+  --surface: #1c2128;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-hover: #79b8ff;
+  --accent-warm: #f0a868;
+  --accent-soft: rgba(88, 166, 255, 0.12);
+  --accent-border: rgba(88, 166, 255, 0.3);
+  --success: #3fb950;
+
+  // Hero-specific
+  --grid-line: rgba(88, 166, 255, 0.04);
+  --orb-color: rgba(88, 166, 255, 0.15);
+  --terminal-bg: rgba(28, 33, 40, 0.75);
+  --terminal-header-bg: rgba(13, 17, 23, 0.6);
+  --badge-bg: rgba(28, 33, 40, 0.85);
+
+  // Code syntax (terminal)
+  --code-keyword: #ff7b72;
+  --code-string: #a5d6ff;
+  --code-fn: #d2a8ff;
+  --code-var: #79c0ff;
+
+  // Body radial gradient
+  --body-gradient-1: rgba(88, 166, 255, 0.08);
+  --body-gradient-2: rgba(240, 168, 104, 0.06);
+
+  // Nav background
+  --nav-bg: rgba(13, 17, 23, 0.85);
+  --nav-bg-scrolled: rgba(13, 17, 23, 0.95);
+}
+
+// Light theme
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-alt: #f6f8fa;
+  --surface: #ffffff;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-muted: #59636e;
+  --accent: #0969da;
+  --accent-hover: #0860c7;
+  --accent-warm: #bc4c00;
+  --accent-soft: rgba(9, 105, 218, 0.08);
+  --accent-border: rgba(9, 105, 218, 0.3);
+  --success: #1a7f37;
+
+  --grid-line: rgba(9, 105, 218, 0.05);
+  --orb-color: rgba(9, 105, 218, 0.12);
+  --terminal-bg: rgba(246, 248, 250, 0.95);
+  --terminal-header-bg: rgba(208, 215, 222, 0.6);
+  --badge-bg: rgba(255, 255, 255, 0.95);
+
+  --code-keyword: #cf222e;
+  --code-string: #0a3069;
+  --code-fn: #8250df;
+  --code-var: #0550ae;
+
+  --body-gradient-1: rgba(9, 105, 218, 0.05);
+  --body-gradient-2: rgba(188, 76, 0, 0.04);
+
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.95);
+}
+
+// SCSS variable aliases that resolve to CSS vars
+$bg: var(--bg);
+$bg-alt: var(--bg-alt);
+$surface: var(--surface);
+$border: var(--border);
+$text: var(--text);
+$text-muted: var(--text-muted);
+$accent: var(--accent);
+$accent-hover: var(--accent-hover);
+$accent-warm: var(--accent-warm);
+$accent-soft: var(--accent-soft);
+$accent-border: var(--accent-border);
+$success: var(--success);
 
 // Typography
 $font-sans: 'Inter', system-ui, sans-serif;
@@ -34,6 +106,7 @@ $breakpoint-tablet: 1024px;
 $transition-fast: 0.2s ease;
 $transition-medium: 0.3s ease;
 $transition-slow: 0.6s ease;
+$transition-theme: 0.4s ease;
 
 // Border radius
 $radius-sm: 6px;
