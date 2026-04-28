@@ -1,0 +1,24 @@
+// =========================================
+// Main SCSS Entry Point
+// Nitish Devadiga — Portfolio
+// =========================================
+
+// Variables & mixins must come first
+@use 'variables' as *;
+
+// Base styles
+@use 'base';
+
+// Components & sections
+@use 'navigation';
+@use 'hero';
+@use 'about';
+@use 'skills';
+@use 'experience';
+@use 'contact';
+
+// Animations
+@use 'animations';
+
+// Responsive overrides (must be last to override)
+@use 'responsive';

@@ -1,0 +1,103 @@
+@use 'variables' as *;
+
+// =========================================
+// Reset & Base
+// =========================================
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-sans;
+  background: $bg;
+  color: $text;
+  line-height: 1.65;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 800px 500px at 10% 0%, rgba(88, 166, 255, 0.08), transparent),
+    radial-gradient(ellipse 600px 400px at 90% 30%, rgba(240, 168, 104, 0.06), transparent);
+}
+
+::selection {
+  background: $accent;
+  color: $bg;
+}
+
+// =========================================
+// Layout helpers
+// =========================================
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+section {
+  padding: 6rem 0;
+}
+
+.section-label {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  color: $accent;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  font-family: $font-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
+
+// =========================================
+// Buttons
+// =========================================
+
+.btn {
+  padding: 0.85rem 1.6rem;
+  border-radius: $radius-md;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all $transition-fast;
+  border: 1px solid transparent;
+  font-family: inherit;
+  cursor: pointer;
+
+  &-primary {
+    background: $accent;
+    color: $bg;
+
+    &:hover {
+      background: $accent-hover;
+      transform: translateY(-2px);
+      box-shadow: $shadow-accent;
+    }
+  }
+
+  &-secondary {
+    background: transparent;
+    color: $text;
+    border-color: $border;
+
+    &:hover {
+      border-color: $accent;
+      color: $accent;
+      transform: translateY(-2px);
+    }
+  }
+}

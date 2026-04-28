@@ -1,0 +1,87 @@
+@use 'variables' as *;
+
+// =========================================
+// Hero
+// =========================================
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 4rem;
+  position: relative;
+
+  &__content {
+    max-width: 800px;
+  }
+
+  &__greeting {
+    font-family: $font-mono;
+    color: $accent;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.15s forwards;
+
+    .accent {
+      font-style: italic;
+      background: linear-gradient(120deg, $accent, $accent-warm);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.4rem;
+    color: $text-muted;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+    min-height: 1.4em; // Prevents layout shift during typewriter
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: $accent;
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 1s infinite;
+    }
+  }
+
+  &__description {
+    font-size: 1.05rem;
+    color: $text-muted;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.45s forwards;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.6s forwards;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}

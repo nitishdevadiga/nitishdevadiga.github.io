@@ -1,0 +1,95 @@
+@use 'variables' as *;
+
+// =========================================
+// Experience
+// =========================================
+
+.experience {
+  &__card {
+    @include card;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @include mobile {
+      padding: 1.75rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $accent, $accent-warm);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__role {
+    font-family: $font-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  &__company {
+    color: $accent;
+    font-size: 1rem;
+  }
+
+  &__meta {
+    font-family: $font-mono;
+    color: $text-muted;
+    font-size: 0.85rem;
+    text-align: right;
+
+    @include mobile {
+      text-align: left;
+    }
+  }
+
+  &__list {
+    list-style: none;
+
+    li {
+      color: $text-muted;
+      padding: 0.6rem 0 0.6rem 1.5rem;
+      position: relative;
+      font-size: 0.98rem;
+
+      &::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: $accent;
+      }
+
+      strong {
+        color: $text;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.highlight {
+  background: $accent-soft;
+  border: 1px solid $accent-border;
+  border-radius: $radius-md;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+
+  strong {
+    color: $accent;
+  }
+}

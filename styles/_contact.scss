@@ -1,0 +1,86 @@
+@use 'variables' as *;
+
+// =========================================
+// Contact
+// =========================================
+
+.contact {
+  text-align: center;
+  padding: 8rem 0;
+
+  h2 {
+    font-family: $font-serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+// =========================================
+// Footer
+// =========================================
+
+.footer {
+  border-top: 1px solid $border;
+  padding: 2rem 0;
+  text-align: center;
+  color: $text-muted;
+  font-size: 0.9rem;
+  font-family: $font-mono;
+}
+
+// =========================================
+// Back to top button
+// =========================================
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: $surface;
+  border: 1px solid $border;
+  color: $text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all $transition-medium;
+  z-index: 90;
+  font-size: 1.2rem;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+    transform: translateY(-3px);
+    box-shadow: $shadow-accent;
+  }
+}

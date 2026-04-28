@@ -1,0 +1,74 @@
+// =========================================
+// Design Tokens
+// =========================================
+
+// Colors
+$bg: #0d1117;
+$bg-alt: #161b22;
+$surface: #1c2128;
+$border: #30363d;
+$text: #e6edf3;
+$text-muted: #8b949e;
+$accent: #58a6ff;
+$accent-hover: #79b8ff;
+$accent-warm: #f0a868;
+$accent-soft: rgba(88, 166, 255, 0.12);
+$accent-border: rgba(88, 166, 255, 0.3);
+$success: #3fb950;
+
+// Typography
+$font-sans: 'Inter', system-ui, sans-serif;
+$font-serif: 'Fraunces', serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// Layout
+$container-max: 1100px;
+$container-padding: 2rem;
+$container-padding-mobile: 1.5rem;
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.6s ease;
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-pill: 999px;
+
+// Shadows
+$shadow-accent: 0 8px 20px rgba(88, 166, 255, 0.3);
+
+// =========================================
+// Mixins
+// =========================================
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+}
+
+@mixin lift-on-hover($amount: -2px) {
+  transition: all $transition-fast;
+  &:hover {
+    transform: translateY($amount);
+  }
+}

@@ -1,0 +1,24 @@
+@use 'variables' as *;
+
+// =========================================
+// Responsive overrides
+// =========================================
+
+@include mobile {
+  .nav__links {
+    display: none;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 $container-padding-mobile;
+  }
+
+  .back-to-top {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+}
