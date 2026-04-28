@@ -1,0 +1,22 @@
+{
+  "name": "nitish-devadiga-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Nitish Devadiga — Full-Stack Software Developer.",
+  "private": true,
+  "scripts": {
+    "build:css": "sass styles/main.scss styles/main.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch styles/main.scss:styles/main.css --style=expanded",
+    "dev": "npm run watch:css & npx serve .",
+    "serve": "npx serve .",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "author": "Nitish Devadiga",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitishdevadiga/nitishdevadiga.github.io.git"
+  }
+}
