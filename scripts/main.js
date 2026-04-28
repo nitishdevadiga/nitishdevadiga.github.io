@@ -7,6 +7,7 @@ import { initReveal } from './reveal.js';
 import { initNavigation } from './nav.js';
 import { initTypewriter } from './typewriter.js';
 import { initFooterYear, initBackToTop } from './ui.js';
+import { initTheme } from './theme.js';
 
 const onReady = (callback) => {
   if (document.readyState !== 'loading') {
@@ -17,6 +18,7 @@ const onReady = (callback) => {
 };
 
 onReady(() => {
+  initTheme();
   initFooterYear();
   initNavigation();
   initReveal();
